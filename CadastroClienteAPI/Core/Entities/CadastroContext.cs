@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace Core
+namespace Core.Entities
 {
     public class CadastroContext : DbContext
     {
@@ -17,6 +17,10 @@ namespace Core
         }
 
         public virtual DbSet<Cliente> Cliente { get; set; }
+
+        public virtual DbSet<Logradouro> Logradouro { get; set; }
+
+        public virtual DbSet<Usuario> Usuario { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -1,6 +1,6 @@
-﻿using CadastroClienteAPI.Models;
-using AutoMapper;
-using Core;
+﻿using AutoMapper;
+using CadastroClienteAPI.Models;
+using Core.Entities;
 
 namespace CadastroClienteAPI.Mappers
 {
@@ -8,7 +8,7 @@ namespace CadastroClienteAPI.Mappers
     {
         public ClienteProfile()
         {
-            CreateMap<ClienteViewModel, Cliente>().ReverseMap();
+            CreateMap<ClienteViewModel, Cliente>().ForMember(dest => dest.Logotipo, opt => opt.Ignore());
         }
 
     }
