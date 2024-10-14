@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CadastroClienteAPI.Extensions;
 using CadastroClienteAPI.Models;
 using Core.Entities;
 using Core.Services;
@@ -23,14 +24,16 @@ namespace CadastroClienteAPI.Controllers
 
         // GET: LogradouroController
         [HttpGet]
-        public ActionResult Get()
+        public ActionResult Get([FromQuery] PaginationParams paginationParams)
         {
-            var listaClientes = _logradouroService.GetAll();
+            var listaLogradouros = _logradouroService.GetAll(paginationParams.PageNumber, paginationParams.PageSize);
 
-            if (listaClientes == null)
+            if (listaLogradouros == null)
                 return NotFound();
 
-            return Ok(listaClientes);
+            Response.AddPaginationHeader(new PaginationHeader(listaLogradouros.CurrentPage, listaLogradouros.PageSize, listaLogradouros.TotalCount, listaLogradouros.TotalPages));
+
+            return Ok(listaLogradouros);
         }
 
         // GET: LogradouroController/5

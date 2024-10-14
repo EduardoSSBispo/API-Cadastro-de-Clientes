@@ -1,5 +1,7 @@
 ﻿using Core.DTO;
 using Core.Entities;
+using Core.Helpers;
+using Core.Pagination;
 using Core.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -61,11 +63,11 @@ namespace Service
             };
         }
 
-        public IEnumerable<ClienteLogradouroDTO> GetAll()
+        public PagedList<ClienteLogradouroDTO> GetAll(int pageNumber, int pageSize)
         {
-            var clientes = _context.Cliente.AsNoTracking().ToList();
+            var query = _context.Cliente.AsNoTracking().AsQueryable();
 
-            var clienteLogradouros = clientes.Select(cliente => new ClienteLogradouroDTO
+            var clienteLogradouros = query.Select(cliente => new ClienteLogradouroDTO
             {
                 Id = cliente.Id,
                 Nome = cliente.Nome,
@@ -74,9 +76,9 @@ namespace Service
                     ? cliente.Logotipo.Take(10).ToArray()
                     : Array.Empty<byte>(),
                 Logradouros = _logradouroService.GetAllFromCliente(cliente.Id)
-            });
+            }).AsQueryable();
 
-            return clienteLogradouros;
+            return PaginationHelper.Create(clienteLogradouros, pageNumber, pageSize);
         }
     }
 }

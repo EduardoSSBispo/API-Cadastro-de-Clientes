@@ -1,4 +1,5 @@
 ﻿using Core.Entities;
+using Core.Pagination;
 
 namespace Core.Services
 {
@@ -16,7 +17,7 @@ namespace Core.Services
 
         public Logradouro? Get(int Id);
 
-        public IEnumerable<Logradouro?> GetAll();
+        public PagedList<Logradouro?> GetAll(int pageNumber, int pageSize);
 
         public IEnumerable<Logradouro?> GetAllFromCliente(int ClienteId);
 

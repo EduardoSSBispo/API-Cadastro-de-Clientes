@@ -1,4 +1,6 @@
 ﻿using Core.Entities;
+using Core.Helpers;
+using Core.Pagination;
 using Core.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -63,9 +65,11 @@ namespace Service
             return _context.Logradouro.Find(id);
         }
 
-        public IEnumerable<Logradouro?> GetAll()
+        public PagedList<Logradouro?> GetAll(int pageNumber, int pageSize)
         {
-            return _context.Logradouro.AsNoTracking();
+            var logradouros = _context.Logradouro.AsNoTracking().AsQueryable();
+
+            return PaginationHelper.Create(logradouros, pageNumber, pageSize);
         }
 
         public IEnumerable<Logradouro?> GetAllFromCliente(int ClienteId)

@@ -1,5 +1,6 @@
 ﻿using Core.DTO;
 using Core.Entities;
+using Core.Pagination;
 
 namespace Core.Services
 {
@@ -13,8 +14,6 @@ namespace Core.Services
 
         public ClienteLogradouroDTO? Get(int id);
 
-        public IEnumerable<ClienteLogradouroDTO> GetAll();
-
-        //public IEnumerable<ClienteLogradouroDTO> GetByNome(string nome);
+        public PagedList<ClienteLogradouroDTO> GetAll(int pageNumber, int pageSize);
     }
 }

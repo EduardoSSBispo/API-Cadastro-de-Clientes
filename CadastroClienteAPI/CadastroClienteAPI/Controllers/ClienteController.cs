@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CadastroClienteAPI.Extensions;
 using CadastroClienteAPI.Models;
 using Core.DTO;
 using Core.Entities;
@@ -27,12 +28,14 @@ namespace CadastroClienteAPI.Controllers
 
         // GET: ClienteController
         [HttpGet]
-        public ActionResult Get()
+        public ActionResult Get([FromQuery] PaginationParams paginationParams)
         {
-            var listaClientes = _clienteService.GetAll();
+            var listaClientes = _clienteService.GetAll(paginationParams.PageNumber, paginationParams.PageSize);
 
             if (listaClientes == null)
                 return NotFound();
+
+            Response.AddPaginationHeader(new PaginationHeader(listaClientes.CurrentPage, listaClientes.PageSize, listaClientes.TotalCount, listaClientes.TotalPages));
 
             return Ok(listaClientes);
         }
