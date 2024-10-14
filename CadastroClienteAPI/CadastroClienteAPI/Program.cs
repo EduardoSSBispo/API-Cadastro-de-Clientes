@@ -1,3 +1,4 @@
+using CadastroClienteAPI.Middleware;
 using Core;
 using Core.Account;
 using Core.Entities;
@@ -62,6 +63,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
+app.UseMiddleware<ExceptionMiddleware>();
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
