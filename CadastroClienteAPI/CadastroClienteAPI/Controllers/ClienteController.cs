@@ -54,7 +54,7 @@ namespace CadastroClienteAPI.Controllers
 
         // POST api/<ClientesController>
         [HttpPost]
-        public ActionResult Post([FromForm] ClienteViewModel clienteModel)
+        public ActionResult Post(/*[FromBody]*/[FromForm] ClienteViewModel clienteModel)
         {
             if (!ModelState.IsValid)
                 return BadRequest("Dados inválidos.");
@@ -67,6 +67,12 @@ namespace CadastroClienteAPI.Controllers
                 clienteModel.Logotipo.CopyTo(memoryStream);
                 cliente.Logotipo = memoryStream.ToArray();  // Armazena a imagem como byte[]
             }
+
+            //Caso seja necessário deserializar a Lista de Logradouros
+            //if (!string.IsNullOrEmpty(clienteModel.LogradourosJson))
+            //{
+            //    clienteModel.ListaLogradouros = JsonConvert.DeserializeObject<IEnumerable<LogradouroViewModel>>(clienteModel.LogradourosJson);
+            //}
 
             _clienteService.Create(cliente);
 

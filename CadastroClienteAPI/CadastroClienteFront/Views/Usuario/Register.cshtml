@@ -1,0 +1,17 @@
+﻿<!-- Views/Account/Login.cshtml -->
+@model CadastroClienteWeb.Model.LoginViewModel
+<form asp-action="Register" method="post">
+    <div>
+        <label for="Nome">Nome</label>
+        <input type="text" id="Nome" name="Nome" required />
+    </div>
+    <div>
+        <label for="Email">Email</label>
+        <input type="text" id="Email" name="Email" required />
+    </div>
+    <div>
+        <label for="Senha">Senha</label>
+        <input type="text" id="password" name="Senha" required />
+    </div>
+    <button type="submit">Criar conta</button>
+</form>

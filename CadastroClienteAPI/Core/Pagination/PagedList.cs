@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Core.Pagination
+﻿namespace Core.Pagination
 {
     public class PagedList<T> : List<T>
     {
         public PagedList(int pageNumber, int count, int pageSize, IEnumerable<T> items)
         {
             CurrentPage = pageNumber;
-            TotalPages = (int) Math.Ceiling(count / (double) pageSize);
+            TotalPages = (int)Math.Ceiling(count / (double)pageSize);
             TotalCount = count;
             PageSize = pageSize;
 

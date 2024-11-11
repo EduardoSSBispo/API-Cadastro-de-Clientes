@@ -1,9 +1,7 @@
 ﻿using CadastroClienteAPI.Models;
 using Core.Account;
 using Core.DTO;
-using Core.Entities;
 using Core.IServices;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CadastroClienteAPI.Controllers

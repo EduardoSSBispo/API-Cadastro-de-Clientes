@@ -4,6 +4,8 @@ namespace CadastroClienteAPI.Models
 {
     public class LogradouroViewModel
     {
+        public int Id { get; set; }
+
         [Display(Name = "Nome")]
         [StringLength(50)]
         public string Nome { get; set; }

@@ -5,3 +5,5 @@
 /CadastroClienteAPI/.vs
 /CadastroClienteAPI/CadastroClienteAPI/bin
 /CadastroClienteAPI/CadastroClienteAPI/obj
+*.dll
+/CadastroClienteAPI/CadastroClienteFront/obj/Debug/net6.0

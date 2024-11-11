@@ -1,0 +1,75 @@
+﻿@model CadastroClienteWeb.Integration.Response.ClienteResponse
+
+@{
+    ViewData["Title"] = "Detalhes de Cliente";
+}
+
+<div class="container pt-5">
+    <div class="row">
+        <h1>Detalhes do cliente</h1>
+    </div>
+    <dl class="row">
+        <dt class="col-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-2">
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd class="col-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class="col-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        @* <dt class="col-2">
+            @Html.DisplayNameFor(model => model.Logotipo)
+        </dt>
+        <dd class="col-10">
+            @Html.DisplayFor(model => model.Logotipo)
+        </dd> *@
+    </dl>
+</div>
+
+<h2><br>Propriedades do cliente</h2>
+
+<div class="container p-4">
+    @if (Model.ListaLogradouros != null)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ListaLogradouros.First().Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ListaLogradouros.First().ClienteId)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ListaLogradouros)
+                {
+                    <tr>
+                        <th>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </th>
+                        <th>
+                            @Html.DisplayFor(modelItem => item.ClienteId)
+                        </th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+<div class=" container p-4">
+    <a href="@Url.ActionLink("Edit", "Cliente", new {  id = Model.Id })" class="btn btn-success borda-concluir" id="border">Editar</a>
+    <a href="@Url.ActionLink("Delete", "Cliente", new {  id = Model.Id })" class="btn btn-danger border-danger" id="border">Delete</a>
+</div>

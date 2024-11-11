@@ -6,9 +6,9 @@ namespace CadastroClienteAPI.Mappers
 {
     public class UsuarioProfile : Profile
     {
-        public UsuarioProfile() 
-        { 
+        public UsuarioProfile()
+        {
             CreateMap<Usuario, UsuarioDTO>().ReverseMap();
-        }        
+        }
     }
 }

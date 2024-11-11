@@ -1,0 +1,34 @@
+﻿@model IEnumerable<CadastroClienteWeb.Integration.Response.LogradouroResponse>
+
+@{
+    ViewData["Title"] = "Logradouro";
+}
+
+<h1>Logradouro</h1>
+
+<div class="container pt-5">
+    <table id="tableLogradouro" class="table table-striped table-bordered dt-responsive nowrap">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>ClienteId</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var logradouro in Model)
+            {
+                <tr>
+                    <td>@logradouro.Nome</td>
+                    <td>@logradouro.ClienteId</td>
+
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id=@logradouro.Id }) |
+                        @Html.ActionLink("Detalhes", "Details", new { id=@logradouro.Id }) |
+                        @Html.ActionLink("Apagar", "Delete", new { id=@logradouro.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

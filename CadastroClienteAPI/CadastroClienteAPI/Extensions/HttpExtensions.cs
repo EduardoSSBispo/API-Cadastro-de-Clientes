@@ -1,5 +1,4 @@
 ﻿using CadastroClienteAPI.Models;
-using System.Runtime.CompilerServices;
 using System.Text.Json;
 
 namespace CadastroClienteAPI.Extensions
